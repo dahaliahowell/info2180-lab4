@@ -65,8 +65,35 @@ $superheroes = [
 
 ?>
 
+<?php
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+    echo "<h1>RESULT</h1>\n<hr>";
+
+    if (!empty($_POST['name'])) {
+
+        $output = "<h3 id='not_found'>SUPERHERO NOT FOUND</h3>";
+        foreach ($superheroes as $superhero) {
+
+            if ($_POST['name'] == $superhero["name"] or $_POST['name'] == $superhero["alias"]) {
+                $output = "";
+                $output = "<h3>" . $superhero['alias'] . "</h3>" . "\n<h4>A.K.A " . $superhero['name'] . "</h4>\n\n<p>" . $superhero['biography'] . "</p>";
+            }
+        }
+
+        echo $output;
+
+    }
+}
+?>
+
 <ul>
+<?php if($_SERVER['REQUEST_METHOD'] === 'POST'): ?>
+<?php if(empty($_POST['name']) or !isset($_POST['name'])): ?>
 <?php foreach ($superheroes as $superhero): ?>
   <li><?= $superhero['alias']; ?></li>
 <?php endforeach; ?>
+<?php endif; ?>
+<?php endif; ?>
 </ul>
