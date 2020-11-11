@@ -9,7 +9,7 @@ window.onload = function() {
       httpRequest = new XMLHttpRequest();
       var name = document.querySelector('#name').value;
   
-      var url = "http://localhost:8888/info2180-lab4/superheroes.php";
+      var url = "http://localhost:8888/info2180-lab4/superheroes.php?query=" + name;
       httpRequest.onreadystatechange = sendAlert;
       httpRequest.open('POST', url);
       httpRequest.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
