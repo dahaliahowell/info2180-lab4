@@ -69,6 +69,8 @@ $superheroes = [
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
+    $name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_STRING);
+
     echo "<h1>RESULT</h1>\n<hr>";
 
     if (!empty($_POST['name'])) {
